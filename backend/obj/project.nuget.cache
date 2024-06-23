@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fyBB/W8cYDGmGZ6CA/p3k7oQJ5CfpP6xb7V4xkRGfAnZsqRoCvAaa7H1zyyCLrwnndhpSXCFimodsH8wUGMcYQ==",
+  "dgSpecHash": "s4Aze1DNDBLXg9v1fsL+HMLTH98p6eeEcOVj43JNndDF2sb8KLWF6nanbecuTTyFwAj71xf8hT24/qH/bWNBWw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ynama\\Dotnet Learning\\Blog\\BloggingPlatform\\BloggingPlatform.csproj",
+  "projectFilePath": "C:\\Users\\ynama\\Dotnet Learning\\Blog\\BloggingPlatform\\backend\\BloggingPlatform.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ynama\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.0\\microsoft.aspnetcore.openapi.8.0.0.nupkg.sha512",
     "C:\\Users\\ynama\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

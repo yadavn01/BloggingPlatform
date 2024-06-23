@@ -465,11 +465,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ynama\\Dotnet Learning\\Blog\\BloggingPlatform\\BloggingPlatform.csproj",
+      "projectUniqueName": "C:\\Users\\ynama\\Dotnet Learning\\Blog\\BloggingPlatform\\backend\\BloggingPlatform.csproj",
       "projectName": "BloggingPlatform",
-      "projectPath": "C:\\Users\\ynama\\Dotnet Learning\\Blog\\BloggingPlatform\\BloggingPlatform.csproj",
+      "projectPath": "C:\\Users\\ynama\\Dotnet Learning\\Blog\\BloggingPlatform\\backend\\BloggingPlatform.csproj",
       "packagesPath": "C:\\Users\\ynama\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ynama\\Dotnet Learning\\Blog\\BloggingPlatform\\obj\\",
+      "outputPath": "C:\\Users\\ynama\\Dotnet Learning\\Blog\\BloggingPlatform\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ynama\\AppData\\Roaming\\NuGet\\NuGet.Config",

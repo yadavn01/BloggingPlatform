@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { getMessage } from './appSerice';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const App: React.FC = () => {
+    const [message, setMessage] = useState<string>('');
+
+    useEffect(() => {
+      getMessage().then(response => {
+        setMessage(response.data.message);
+      }).catch(error => {
+        console.log("there's an error",error);
+      })
+    },[]);
+
+    return (
+   <div>
+   <h2>{message}</h2>
+   </div>
   );
-}
+};
 
 export default App;
