@@ -1,5 +1,9 @@
-public class RegisterModel 
+namespace BloggingPlatform.Models
 {
-    public string email { get; set; }
-    public string password { get; set; }
+    public class RegisterModel
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
 }
