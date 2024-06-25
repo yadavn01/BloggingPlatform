@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { getMessage } from './appSerice';
+import { getMessage } from './appService';
 
 const App: React.FC = () => {
     const [message, setMessage] = useState<string>('');
