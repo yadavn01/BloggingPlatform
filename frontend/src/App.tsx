@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Register from './components/Register';
+import Login from './components/Login';
 import './App.css';
 
 
 const App: React.FC = () => {
 
-
-    useEffect(() => {
-    },[]);
-
-    return (
-   <div>
-   <h2>Register/Login</h2>
-   </div>
+  return (
+    <Router>
+      <div>
+        <h2>Register/Login</h2>
+        <Routes>
+          <Route path="/" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
