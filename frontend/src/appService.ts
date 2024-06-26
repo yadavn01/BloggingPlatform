@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5194/api/test';
+const API_URL = 'http://localhost:5194/api/auth';
 
 const api = axios.create(
     {

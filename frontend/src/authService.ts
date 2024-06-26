@@ -10,8 +10,9 @@ password: string;
 }
 
 export const register = (data: RegisterData) => {
-    return api.post('register', data);
+    return api.post('register', data);   
 }
+
 export const login = (data: LoginData) => {
     return api.post('login', data);
 }

@@ -8,7 +8,6 @@ const Login = () => {
     const [token, setToken] = useState('');
 
     const handleLogin = async (e: React.FormEvent) => {
-
         e.preventDefault();
         try {
             const response = await login({email,password})
@@ -19,6 +18,8 @@ const Login = () => {
         catch(error)
         {
             setMessage("Login Unsuccessfull, try again!")
+            console.log(error);
+            
         }
     }
     
