@@ -6,7 +6,15 @@ const Register = () => {
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
     const[message, setMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
+
+    const handleClear = () => {
+        setEmail('');
+        setPassword('');
+        setMessage('');
+    }
+
 
 const handleRegister = async (e: React.FormEvent)  => {
 e.preventDefault();
@@ -31,9 +39,10 @@ catch(error) {
                 </div>
                 <div>
                     <label>Password: </label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    <input type="password" value={password} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <button type="submit">Register</button>
+                <button type="button" onClick={handleClear}> Clear</button>
             </form>
             {message && <p>{message}</p>}
         </div>
