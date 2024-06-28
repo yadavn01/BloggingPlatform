@@ -3,10 +3,9 @@ import { register } from '../authService';
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-    const[email, setEmail] = useState('');
-    const[password, setPassword] = useState('');
-    const[message, setMessage] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
     const handleClear = () => {
@@ -16,17 +15,17 @@ const Register = () => {
     }
 
 
-const handleRegister = async (e: React.FormEvent)  => {
-e.preventDefault();
-try {
-    await register({email,password});
-    setMessage("Registration Successfull")
-    navigate('/login')
-}
-catch(error) {
-    console.log(error);
-    setMessage("Registration not complete, try again!")
-}
+    const handleRegister = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            await register({ email, password });
+            setMessage("Registration Successfull")
+            navigate('/login')
+        }
+        catch (error) {
+            console.log(error);
+            setMessage("Registration not complete, try again!")
+        }
 
 }
     return (
