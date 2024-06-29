@@ -20,8 +20,7 @@ const Login = () => {
         catch(error)
         {
             setMessage("Login Unsuccessfull, try again!")
-            console.log(error);
-            
+            console.log(error);    
         }
     }
     
