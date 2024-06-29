@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { login } from "../authService";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
     const[message, setMessage] = useState('');
-    const [token, setToken] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             const response = await login({email,password})
-            setToken(response.data.token)
-            console.log(setToken);
+            const userToken = response.data.token
+            localStorage.setItem('token',userToken)
             setMessage("Login Successfull")
+            navigate('/profile')
         }
         catch(error)
         {
@@ -38,12 +40,12 @@ const Login = () => {
                 <button type="submit">Login</button>
             </form>
             {message && <p>{message}</p>}
-            {token && (
+            {/* {token && (
                 <div>
                     <h3>Token</h3>
                     <p>{token}</p>
                 </div>
-            )}
+            )} */}
         </div>
     )
 }
