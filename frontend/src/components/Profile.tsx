@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
 
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState<any>('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -12,17 +12,20 @@ const Profile = () => {
         
         const fetchUserProfile = async () => {
             if(token) {
+                console.log('Token:', token);
                 try {
-                    const response = await axios.get("http://localhost:5194/api/auth/profile", {
+                    console.log('Making API request...');
+                    const response = await axios.get('http://localhost:5194/api/auth/profile', {
                         headers: {
                             Authorization: `Bearer ${token}`
                           }
                     })
+                    console.log('Profile fetched successfully:', response.data);
                     setUser(response.data)
                 }
                 catch(error) {
                     console.error('Failed to fetch user profile:', error);
-                    localStorage.removeItem('token');
+                    // localStorage.removeItem('token');
                     navigate('/login')
                 }
             }
@@ -30,6 +33,7 @@ const Profile = () => {
                 navigate('/login')
             }
         }
+        fetchUserProfile();
     }, [navigate])
 
     const handleLogout = () => {
