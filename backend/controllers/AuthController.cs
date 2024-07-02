@@ -56,6 +56,11 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> GetProfile()
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userId == null)
+        {
+            return Unauthorized("User ID not found in token");
+        }
+        
         var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
         {

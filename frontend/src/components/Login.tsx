@@ -15,7 +15,7 @@ const Login = () => {
             const userToken = response.data.token
             localStorage.setItem('token',userToken)
             setMessage("Login Successfull")
-            navigate('/profile')
+             navigate('/profile')
         }
         catch(error)
         {
