@@ -9,32 +9,32 @@ const Profile = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-
+        console.log('Token:', token);
+    
         const fetchUserProfile = async () => {
-            if (token) {
-                console.log('Token:', token);
-                try {
-                    console.log('Making API request...');
-                    const response = await axios.get('http://localhost:5194/api/auth/profile', {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    })
-                    console.log('Profile fetched successfully:', response.data);
-                    setUser(response.data)
+          if (token) {
+            try {
+              console.log('Making API request...');
+              const response = await axios.get('http://localhost:5194/api/auth/profile', {
+                headers: {
+                  Authorization: `Bearer ${token}`
                 }
-                catch (error) {
-                    console.error('Failed to fetch user profile:', error);
-                    localStorage.removeItem('token');
-                    navigate('/login')
-                }
+              });
+              console.log('Profile fetched successfully:', response.data);
+              setUser(response.data);
+            } catch (error) {
+              console.error('Failed to fetch user profile:', error);
+              localStorage.removeItem('token');
+              navigate('/login');
             }
-            else {
-                navigate('/login')
-            }
-        }
+          } else {
+            console.log('No token found, redirecting to login');
+            navigate('/login');
+          }
+        };
+    
         fetchUserProfile();
-    }, [navigate])
+      }, [navigate]);
 
     const handleLogout = () => {
         localStorage.removeItem('token')

@@ -51,7 +51,7 @@ public class AuthController : ControllerBase
         return Unauthorized();
     }
 
-    [Authorize]
+   [Authorize]
     [HttpGet("profile")]
     public async Task<IActionResult> GetProfile()
     {
@@ -60,12 +60,13 @@ public class AuthController : ControllerBase
         {
             return Unauthorized("User ID not found in token");
         }
-        
+
         var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
         {
             return NotFound();
         }
+        
         return Ok(new
         {
             user.Email,
@@ -73,7 +74,7 @@ public class AuthController : ControllerBase
         });
     }
     private string GenerateJwtToken(IdentityUser user)
-    {
+   {
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
@@ -86,7 +87,7 @@ public class AuthController : ControllerBase
 
         var token = new JwtSecurityToken(
             issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Issuer"],
+            audience: _configuration["Jwt:Audience"],
             claims: claims,
             expires: DateTime.Now.AddMinutes(30),
             signingCredentials: creds);
