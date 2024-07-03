@@ -1,8 +1,8 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +51,7 @@ public class AuthController : ControllerBase
         return Unauthorized();
     }
 
-   [Authorize]
+    [Authorize]
     [HttpGet("profile")]
     public async Task<IActionResult> GetProfile()
     {
