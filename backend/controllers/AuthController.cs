@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Logging; 
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -16,12 +18,14 @@ public class AuthController : ControllerBase
     private readonly UserManager<IdentityUser> _userManager;
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly IConfiguration _configuration;
+    private readonly ILogger<AuthController> _logger;
 
-    public AuthController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IConfiguration configuration)
+    public AuthController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IConfiguration configuration, ILogger<AuthController> logger)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _configuration = configuration;
+        _logger = logger; 
     }
 
     [HttpPost("register")]
@@ -45,41 +49,50 @@ public class AuthController : ControllerBase
         if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
         {
             var token = GenerateJwtToken(user);
+            Console.WriteLine("Generated Token: " + token);
             return Ok(new { token });
         }
 
         return Unauthorized();
     }
 
-    [Authorize]
-    [HttpGet("profile")]
-    public async Task<IActionResult> GetProfile()
-    {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (userId == null)
-        {
-            return Unauthorized("User ID not found in token");
-        }
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+[HttpGet("profile")]
+public async Task<IActionResult> GetProfile()
+{
+    _logger.LogInformation("GetProfile called");
 
-        var user = await _userManager.FindByIdAsync(userId);
-        if (user == null)
-        {
-            return NotFound();
-        }
-        
-        return Ok(new
-        {
-            user.Email,
-            user.UserName
-        });
+    var userEmail = User.FindFirstValue(ClaimTypes.Email);
+    _logger.LogInformation($"User email from token: {userEmail}");
+
+    if (userEmail == null)
+    {
+        _logger.LogWarning("User email not found in token");
+        return Unauthorized("User email not found in token");
     }
-    private string GenerateJwtToken(IdentityUser user)
-   {
+
+    var user = await _userManager.FindByEmailAsync(userEmail);
+    if (user == null)
+    {
+        _logger.LogWarning($"User not found with email: {userEmail}");
+        return NotFound();
+    }
+
+    _logger.LogInformation($"User profile retrieved for user: {user.Email}");
+
+    return Ok(new
+    {
+        user.Email,
+        user.UserName
+    });
+}
+   private string GenerateJwtToken(IdentityUser user)
+    {
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+            new Claim(JwtRegisteredClaimNames.Sub, user.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.NameIdentifier, user.Id)
+             new Claim(ClaimTypes.Email, user.Email)
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -92,6 +105,9 @@ public class AuthController : ControllerBase
             expires: DateTime.Now.AddMinutes(30),
             signingCredentials: creds);
 
+        _logger.LogInformation($"Token generated for user: {user.Email}");
+        _logger.LogInformation($"Token generated for user ID: {user.Id}");
+        
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }
