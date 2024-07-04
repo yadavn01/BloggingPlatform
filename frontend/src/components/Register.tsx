@@ -8,6 +8,10 @@ const Register = () => {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
+    const redirectLogin = () => {
+        navigate('/login');
+    }
+
     const handleClear = () => {
         setEmail('');
         setPassword('');
@@ -42,6 +46,8 @@ const Register = () => {
                 </div>
                 <button type="submit">Register</button>
                 <button type="button" onClick={handleClear}> Clear</button>
+                <p>Already have an account?</p>
+                <button type="button" onClick={redirectLogin}>Login</button>
             </form>
             {message && <p>{message}</p>}
         </div>

@@ -8,6 +8,10 @@ const Login = () => {
     const[message, setMessage] = useState('');
     const navigate = useNavigate();
 
+    const redirectRegister = () => {
+        navigate('/register');
+    }
+
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -44,6 +48,8 @@ const Login = () => {
                 </div>
                 <button type="submit">Login</button>
                 <button type="button" onClick={handleClear}> Clear</button>
+                <p>Don't have an account?</p>
+                <button type="button" onClick={redirectRegister}>Register</button>
             </form>
             {message && <p>{message}</p>}
             {/* {token && (
