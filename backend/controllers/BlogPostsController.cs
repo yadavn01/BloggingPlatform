@@ -21,6 +21,7 @@ public class BlogPostsController : ControllerBase
         var blogposts = _context.BlogPosts.ToListAsync();
         return Ok(blogposts);
      }
+     
      [HttpPost]
      public async Task<IActionResult> CreateBlogPost([FromBody] BlogPost blogPost)
      {
