@@ -8,9 +8,21 @@ const CreateBlogPost = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const response = await axios.post('http://localhost:5194/api/blogposts', { title, content });
-        console.log('Blog post created:', response.data);
-    }
+        const token = localStorage.getItem('token');
+        if (token) {
+            const response = await axios.post('http://localhost:5194/api/blogposts', 
+                { title, content },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+            console.log('Blog post created:', response.data);
+        } else {
+            console.log('No token found');
+        }
+    };
 
     return (
         <form onSubmit={handleSubmit}>
@@ -23,6 +35,9 @@ const CreateBlogPost = () => {
             <div>
                 <label>Content</label>
                 <textarea value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+            </div>
+            <div>
+            <button type="submit">Submit</button>
             </div>
         </div>
         </form>
