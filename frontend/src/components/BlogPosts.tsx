@@ -13,7 +13,8 @@ const BlogPosts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await axios.get('http://localhost:5194/api/blogposts');
-            setPosts(response.data)
+            console.log("response", response)
+            setPosts(response.data.result)
         }
         fetchPosts();    
     },[])

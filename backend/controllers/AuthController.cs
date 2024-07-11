@@ -83,7 +83,7 @@ public async Task<IActionResult> GetProfile()
     return Ok(new
     {
         user.Email,
-        user.UserName
+        user.Id
     });
 }
    private string GenerateJwtToken(IdentityUser user)
@@ -92,7 +92,8 @@ public async Task<IActionResult> GetProfile()
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-             new Claim(ClaimTypes.Email, user.Email)
+             new Claim(ClaimTypes.Email, user.Email),
+             new Claim(ClaimTypes.NameIdentifier, user.Id)
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

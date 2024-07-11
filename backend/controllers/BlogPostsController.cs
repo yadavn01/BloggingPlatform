@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging; 
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,14 +22,18 @@ public class BlogPostsController : ControllerBase
 {
      private readonly ApplicationDbContext _context;
 
-     public BlogPostsController(ApplicationDbContext context)
+     private readonly ILogger<AuthController> _logger;
+
+     public BlogPostsController(ApplicationDbContext context, ILogger<AuthController> logger)
      {
         _context = context;
+        _logger = logger;
      }
 
      [HttpGet]
      public async Task<IActionResult> GetBlogPosts()
      {
+      _logger.LogInformation("GetBlogPosts called");
         var blogposts = _context.BlogPosts.ToListAsync();
         return Ok(blogposts);
      }
@@ -36,16 +41,24 @@ public class BlogPostsController : ControllerBase
      [Authorize]
      [HttpPost]
      public async Task<IActionResult> CreateBlogPost([FromBody] BlogPost blogPost)
-     {
-        var authorEmail = User.FindFirstValue(ClaimTypes.Email);
-        if (string.IsNullOrEmpty(authorEmail))
+   {
+        _logger.LogInformation("CreateBlogPost called");
+
+        var authorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        _logger.LogInformation($"Author ID retrieved: {authorId}");
+
+        if (string.IsNullOrEmpty(authorId))
         {
-            return Unauthorized("User email not found in token");
+            _logger.LogWarning("User ID not found in token");
+            return Unauthorized("User ID not found in token");
         }
-        blogPost.AuthorId = authorEmail;
+
+        blogPost.AuthorId = authorId;
         blogPost.CreatedAt = DateTime.UtcNow;
         _context.BlogPosts.Add(blogPost);
         await _context.SaveChangesAsync();
+
+        _logger.LogInformation("Blog post created successfully");
         return CreatedAtAction(nameof(GetBlogPosts), new { id = blogPost.Id }, blogPost);
-     }
+    }
 }

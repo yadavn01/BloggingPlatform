@@ -45,7 +45,7 @@ const Profile = () => {
             {user && (
                 <div>
                     <p>Email: {user.email}</p>
-                    <p>Username: {user.username}</p>
+                    <p>User Id: {user.id}</p>
                 </div>
             )}
             <div>

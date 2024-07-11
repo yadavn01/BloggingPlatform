@@ -5,22 +5,30 @@ import axios from "axios";
 const CreateBlogPost = () => {
     const [title, setTitle] = useState<string>('');
     const [content, setContent] = useState<string>('');
+    const [message, setMessage] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
         if (token) {
-            const response = await axios.post('http://localhost:5194/api/blogposts', 
-                { title, content },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
+            try {
+                const response = await axios.post('http://localhost:5194/api/blogposts', 
+                    { title, content },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
                     }
-                }
-            );
-            console.log('Blog post created:', response.data);
+                );
+                console.log('Blog post created:', response.data);
+                setMessage('Blog post created successfully!');
+            } catch (error) {
+                console.error('Error creating blog post:', error);
+                setMessage('Failed to create blog post.');
+            }
         } else {
             console.log('No token found');
+            setMessage('No token found.');
         }
     };
 
