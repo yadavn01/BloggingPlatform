@@ -11,6 +11,7 @@ const CreateBlogPost = () => {
         e.preventDefault();
         const token = localStorage.getItem('token');
         if (token) {
+            console.log("hitting api post req");
             try {
                 const response = await axios.post('http://localhost:5194/api/blogposts', 
                     { title, content },
@@ -48,6 +49,7 @@ const CreateBlogPost = () => {
             <button type="submit">Submit</button>
             </div>
         </div>
+        {message && <p>{message}</p>}
         </form>
     )
 }

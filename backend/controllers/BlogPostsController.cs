@@ -38,27 +38,51 @@ public class BlogPostsController : ControllerBase
         return Ok(blogposts);
      }
 
-     [Authorize]
-     [HttpPost]
-     public async Task<IActionResult> CreateBlogPost([FromBody] BlogPost blogPost)
+   [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+   [HttpPost]
+   public async Task<IActionResult> CreateBlogPost([FromBody] BlogPost blogPost)
    {
-        _logger.LogInformation("CreateBlogPost called");
+      _logger.LogInformation("CreateBlogPosts called");
+      
+      if (User.Identity.IsAuthenticated)
+      {
+         _logger.LogInformation("User is authenticated");
 
-        var authorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        _logger.LogInformation($"Author ID retrieved: {authorId}");
+         var userClaims = User.Claims;
+         foreach (var claim in userClaims)
+         {
+            _logger.LogInformation($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
+         }
 
-        if (string.IsNullOrEmpty(authorId))
-        {
-            _logger.LogWarning("User ID not found in token");
-            return Unauthorized("User ID not found in token");
-        }
+         var authorEmail = User.FindFirstValue(ClaimTypes.Email);
+         _logger.LogInformation($"Author email retrieved: {authorEmail}");
 
-        blogPost.AuthorId = authorId;
-        blogPost.CreatedAt = DateTime.UtcNow;
-        _context.BlogPosts.Add(blogPost);
-        await _context.SaveChangesAsync();
+         if (string.IsNullOrEmpty(authorEmail))
+         {
+            _logger.LogWarning("User email not found in token");
+            return Unauthorized("User email not found in token");
+         }
 
-        _logger.LogInformation("Blog post created successfully");
-        return CreatedAtAction(nameof(GetBlogPosts), new { id = blogPost.Id }, blogPost);
-    }
+         try
+         {
+            blogPost.AuthorId = authorEmail;
+            blogPost.CreatedAt = DateTime.UtcNow;
+            _context.BlogPosts.Add(blogPost);
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation("Blog post created successfully");
+            return CreatedAtAction(nameof(GetBlogPosts), new { id = blogPost.Id }, blogPost);
+         }
+         catch (Exception ex)
+         {
+            _logger.LogError(ex, "Error creating blog post");
+            return StatusCode(500, "Internal server error");
+         }
+      }
+      else
+      {
+         _logger.LogWarning("User is not authenticated");
+         return Unauthorized("User is not authenticated");
+      }
+   }
 }
