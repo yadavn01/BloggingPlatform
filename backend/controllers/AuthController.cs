@@ -92,7 +92,8 @@ public async Task<IActionResult> GetProfile()
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.Email, user.Email)
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.NameIdentifier, user.Id)
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -105,9 +106,9 @@ public async Task<IActionResult> GetProfile()
             expires: DateTime.Now.AddMinutes(30),
             signingCredentials: creds);
 
+        
         _logger.LogInformation($"Token generated for user: {user.Email}");
         _logger.LogInformation($"Token generated for user ID: {user.Id}");
-        
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }

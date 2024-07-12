@@ -41,48 +41,49 @@ public class BlogPostsController : ControllerBase
    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
    [HttpPost]
    public async Task<IActionResult> CreateBlogPost([FromBody] BlogPost blogPost)
-   {
-      _logger.LogInformation("CreateBlogPosts called");
-      
-      if (User.Identity.IsAuthenticated)
-      {
-         _logger.LogInformation("User is authenticated");
+{
+    _logger.LogInformation("CreateBlogPosts called");
 
-         var userClaims = User.Claims;
-         foreach (var claim in userClaims)
-         {
-            _logger.LogInformation($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
-         }
+    // Log all claims to verify the presence of NameIdentifier
+    foreach (var claim in User.Claims)
+    {
+        _logger.LogInformation($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
+    }
 
-         var authorEmail = User.FindFirstValue(ClaimTypes.Email);
-         _logger.LogInformation($"Author email retrieved: {authorEmail}");
+    // Extract the user ID (AuthorId) from the claims
+    var authorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    _logger.LogInformation($"Author ID retrieved: {authorId}");
 
-         if (string.IsNullOrEmpty(authorEmail))
-         {
-            _logger.LogWarning("User email not found in token");
-            return Unauthorized("User email not found in token");
-         }
+    if (string.IsNullOrEmpty(authorId))
+    {
+        _logger.LogWarning("User ID not found in token");
+        return Unauthorized("User ID not found in token");
+    }
 
-         try
-         {
-            blogPost.AuthorId = authorEmail;
-            blogPost.CreatedAt = DateTime.UtcNow;
-            _context.BlogPosts.Add(blogPost);
-            await _context.SaveChangesAsync();
+    try
+    {
+        // Assign the extracted AuthorId to the blogPost object
+        blogPost.AuthorId = authorId;
+        blogPost.CreatedAt = DateTime.UtcNow;
 
-            _logger.LogInformation("Blog post created successfully");
-            return CreatedAtAction(nameof(GetBlogPosts), new { id = blogPost.Id }, blogPost);
-         }
-         catch (Exception ex)
-         {
-            _logger.LogError(ex, "Error creating blog post");
-            return StatusCode(500, "Internal server error");
-         }
-      }
-      else
-      {
-         _logger.LogWarning("User is not authenticated");
-         return Unauthorized("User is not authenticated");
-      }
-   }
+        // Validate the model state
+        if (!TryValidateModel(blogPost))
+        {
+            return BadRequest(ModelState);
+        }
+
+        // Add the blogPost to the database context
+        _context.BlogPosts.Add(blogPost);
+        // Save the changes to the database
+        await _context.SaveChangesAsync();
+
+        _logger.LogInformation("Blog post created successfully");
+        return CreatedAtAction(nameof(GetBlogPosts), new { id = blogPost.Id }, blogPost);
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Error creating blog post");
+        return StatusCode(500, "Internal server error");
+    }
+}
 }
