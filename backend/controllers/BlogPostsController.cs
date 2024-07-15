@@ -44,26 +44,20 @@ public class BlogPostsController : ControllerBase
 {
     _logger.LogInformation("CreateBlogPosts called");
 
-    // Log all claims to verify the presence of NameIdentifier
-    foreach (var claim in User.Claims)
-    {
-        _logger.LogInformation($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
-    }
+    // Extract the user email (AuthorEmail) from the claims
+    var authorEmail = User.FindFirstValue(ClaimTypes.Email);
+    _logger.LogInformation($"Author Email retrieved: {authorEmail}");
 
-    // Extract the user ID (AuthorId) from the claims
-    var authorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-    _logger.LogInformation($"Author ID retrieved: {authorId}");
-
-    if (string.IsNullOrEmpty(authorId))
+    if (string.IsNullOrEmpty(authorEmail))
     {
-        _logger.LogWarning("User ID not found in token");
-        return Unauthorized("User ID not found in token");
+        _logger.LogWarning("User email not found in token");
+        return Unauthorized("User email not found in token");
     }
 
     try
     {
-        // Assign the extracted AuthorId to the blogPost object
-        blogPost.AuthorId = authorId;
+        // Assign the extracted AuthorEmail to the blogPost object
+        blogPost.AuthorId = authorEmail;
         blogPost.CreatedAt = DateTime.UtcNow;
 
         // Validate the model state

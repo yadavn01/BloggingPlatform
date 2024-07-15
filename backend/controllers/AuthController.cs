@@ -65,11 +65,6 @@ public async Task<IActionResult> GetProfile()
     var userEmail = User.FindFirstValue(ClaimTypes.Email);
     _logger.LogInformation($"User email from token: {userEmail}");
 
-    if (userEmail == null)
-    {
-        _logger.LogWarning("User email not found in token");
-        return Unauthorized("User email not found in token");
-    }
 
     var user = await _userManager.FindByEmailAsync(userEmail);
     if (user == null)
