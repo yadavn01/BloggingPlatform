@@ -19,8 +19,8 @@ const NavBar: React.FC = () => {
           Blogging Platform
         </Typography>
         <Box sx={{ display: 'flex', gap: 2 }}>
-          <Button color="inherit" component={RouterLink} to="/about">
-            About Me
+          <Button color="inherit" component={RouterLink} to="/blogposts">
+            Blog
           </Button>
           <Button color="inherit" component={RouterLink} to="/contact">
             Contact
