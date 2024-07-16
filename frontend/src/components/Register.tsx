@@ -35,28 +35,33 @@ const Register = () => {
 }
     return (
         <Container maxWidth="sm">
-             <Box sx={{ mt: 4 }}> 
-        <div>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Register
-        </Typography>
-            <form onSubmit={handleRegister}>
+            <Box sx={{ mt: 4 }}>
                 <div>
-                    <label>Email: </label>
-                    <TextField type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <Typography variant="h4" component="h1" gutterBottom>
+                        Register
+                    </Typography>
+                    <form onSubmit={handleRegister}>
+                        <div>
+                            <label>Email: </label>
+                            <TextField type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+                                fullWidth
+                                margin="normal"
+                                required />
+                        </div>
+                        <div>
+                            <label>Password: </label>
+                            <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} fullWidth
+                                margin="normal"
+                                required />
+                        </div>
+                        <Button type="submit">Register</Button>
+                        <Button type="button" onClick={handleClear}> Clear</Button>
+                        <p>Already have an account?</p>
+                        <Button type="button" onClick={redirectLogin}>Login</Button>
+                    </form>
+                    {message && <p>{message}</p>}
                 </div>
-                <div>
-                    <label>Password: </label>
-                    <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                </div>
-                <Button type="submit">Register</Button>
-                <Button type="button" onClick={handleClear}> Clear</Button>
-                <p>Already have an account?</p>
-                <Button type="button" onClick={redirectLogin}>Login</Button>
-            </form>
-            {message && <p>{message}</p>}
-        </div>
-        </Box>
+            </Box>
         </Container>
     );
 }

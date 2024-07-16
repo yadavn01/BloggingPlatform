@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { TextField, Button, Container, Typography, Box } from '@mui/material';
 
 const Profile = () => {
     const [user, setUser] = useState<any>(null);
@@ -49,7 +50,7 @@ const Profile = () => {
                 </div>
             )}
             <div>
-                <button onClick={handleLogout}>Logout</button>
+                <Button variant="outlined" color="inherit" onClick={handleLogout}>Logout</Button>
             </div>
         </div>
     );

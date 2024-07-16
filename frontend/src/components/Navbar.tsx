@@ -1,16 +1,40 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Link as RouterLink } from 'react-router-dom';
+import { Box } from '@mui/material';
 
-const NavBar = () => {
-    return (
-        <nav>
-            <ul>
-                <li><Link to="/blogposts">Blog Posts</Link></li>
-                <li><Link to="/create-blogposts">Create Blog Post</Link></li>
-                <li><Link to="/profile">Profile</Link></li>
-            </ul>
-        </nav>
-    );
+const NavBar: React.FC = () => {
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Blogging Platform
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button color="inherit" component={RouterLink} to="/about">
+            About Me
+          </Button>
+          <Button color="inherit" component={RouterLink} to="/contact">
+            Contact
+          </Button>
+          <Button variant="outlined" color="inherit" component={RouterLink} to="/login">
+            Log in
+          </Button>
+          <Button variant="outlined" color="inherit" component={RouterLink} to="/register">
+            Register
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default NavBar;

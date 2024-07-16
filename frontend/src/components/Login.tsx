@@ -36,22 +36,32 @@ const Login = () => {
     }
     
     return (
+        <Container maxWidth="sm">
+             <Box sx={{ mt: 4 }}> 
         <div>
-            <h2> Login</h2>
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label>Email: </label>
-                    <TextField type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                </div>
-                <div>
-                    <label>Password: </label>
-                    <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                </div>
-                <Button type="submit">Login</Button>
-                <Button type="button" onClick={handleClear}> Clear</Button>
-                <p>Don't have an account?</p>
-                <Button type="button" onClick={redirectRegister}>Register</Button>
-            </form>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Login
+        </Typography>
+                    <form onSubmit={handleLogin}>
+                        <div>
+                            <label>Email: </label>
+                            <TextField type="email" value={email} onChange={(e) => setEmail(e.target.value)} 
+                                fullWidth
+                                margin="normal"
+                                required />
+                        </div>
+                        <div>
+                            <label>Password: </label>
+                            <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} 
+                                fullWidth
+                                margin="normal"
+                                required />
+                        </div>
+                        <Button type="submit">Login</Button>
+                        <Button type="button" onClick={handleClear}> Clear</Button>
+                        <p>Don't have an account?</p>
+                        <Button type="button" onClick={redirectRegister}>Register</Button>
+                    </form>
             {message && <p>{message}</p>}
             {/* {token && (
                 <div>
@@ -60,6 +70,8 @@ const Login = () => {
                 </div>
             )} */}
         </div>
+        </Box>
+        </Container>
     )
 }
 

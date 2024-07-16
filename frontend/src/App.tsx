@@ -25,7 +25,6 @@ const App: React.FC = () => {
       <CssBaseline />
     <Router>
       <div>
-        <h2>Blogging Platform</h2>
         <NavBar />
         <Routes>
           <Route path="/" element={<Register />} />
