@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { register } from '../authService';
+import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -33,24 +34,30 @@ const Register = () => {
 
 }
     return (
+        <Container maxWidth="sm">
+             <Box sx={{ mt: 4 }}> 
         <div>
-            <h2> Register</h2>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Register
+        </Typography>
             <form onSubmit={handleRegister}>
                 <div>
                     <label>Email: </label>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <TextField type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div>
                     <label>Password: </label>
-                    <input type="password" value={password} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={(e) => setPassword(e.target.value)} required />
+                    <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
-                <button type="submit">Register</button>
-                <button type="button" onClick={handleClear}> Clear</button>
+                <Button type="submit">Register</Button>
+                <Button type="button" onClick={handleClear}> Clear</Button>
                 <p>Already have an account?</p>
-                <button type="button" onClick={redirectLogin}>Login</button>
+                <Button type="button" onClick={redirectLogin}>Login</Button>
             </form>
             {message && <p>{message}</p>}
         </div>
+        </Box>
+        </Container>
     );
 }
 

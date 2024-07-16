@@ -8,11 +8,21 @@ import Profile from './components/Profile';
 import NavBar from './components/Navbar';
 import BlogPosts from './components/BlogPosts';
 import CreateBlogPost from './components/CreateBlogPost';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
 
 
 const App: React.FC = () => {
 
   return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
     <Router>
       <div>
         <h2>Blogging Platform</h2>
@@ -27,6 +37,7 @@ const App: React.FC = () => {
         </Routes>
       </div>
     </Router>
+    </ThemeProvider>
   );
 };
 

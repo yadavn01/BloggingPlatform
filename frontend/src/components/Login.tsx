@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../authService";
 import { useNavigate } from "react-router-dom";
+import { TextField, Button, Container, Typography, Box } from '@mui/material';
 
 const Login = () => {
     const[email, setEmail] = useState('');
@@ -40,16 +41,16 @@ const Login = () => {
             <form onSubmit={handleLogin}>
                 <div>
                     <label>Email: </label>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <TextField type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div>
                     <label>Password: </label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
-                <button type="submit">Login</button>
-                <button type="button" onClick={handleClear}> Clear</button>
+                <Button type="submit">Login</Button>
+                <Button type="button" onClick={handleClear}> Clear</Button>
                 <p>Don't have an account?</p>
-                <button type="button" onClick={redirectRegister}>Register</button>
+                <Button type="button" onClick={redirectRegister}>Register</Button>
             </form>
             {message && <p>{message}</p>}
             {/* {token && (
