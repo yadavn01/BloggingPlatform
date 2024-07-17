@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { TextField, Button, Container, Typography, Box } from '@mui/material';
 
 
 const CreateBlogPost = () => {
@@ -34,23 +36,36 @@ const CreateBlogPost = () => {
     };
 
     return (
+        <Container maxWidth="sm">
+             <Box sx={{ mt: 4 }}> 
         <form onSubmit={handleSubmit}>
         <div>
         <div>
                 <label>Title</label>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                
+                <TextField type="text" value={title} onChange={(e) => setTitle(e.target.value)}
+                fullWidth
+                margin="normal"
+                required />
             </div>
 
             <div>
                 <label>Content</label>
-                <textarea value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+                <TextField value={content} onChange={(e) => setContent(e.target.value)}
+                fullWidth
+                multiline
+                rows={4}
+                margin="normal"
+                required />
             </div>
             <div>
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
             </div>
         </div>
         {message && <p>{message}</p>}
         </form>
+        </Box>
+        </Container>
     )
 }
 export default CreateBlogPost;

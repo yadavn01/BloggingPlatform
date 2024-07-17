@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link as RouterLink } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import { useNavigate } from "react-router-dom";
+import { TextField, Button, Container, Typography, Box } from '@mui/material';
 
 interface BlogPost {
     id: number;
@@ -20,8 +26,18 @@ const BlogPosts = () => {
     },[])
 
     return (
+        <Container maxWidth="sm">
+             <Box sx={{ mt: 4 }}> 
         <div>
-            <h2>Posts</h2>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Posts
+        </Typography>
+        <Button variant="outlined" color="inherit" component={RouterLink} to="/create-blogposts">
+            Create Blog
+          </Button>
+        <Button variant="outlined" color="inherit" component={RouterLink} to="/profile">
+            Profile
+          </Button>
             <ul>
                 {posts.map(post => (
                     <li key={post.id}>
@@ -31,6 +47,8 @@ const BlogPosts = () => {
                 ))}
             </ul>
         </div>
+        </Box>
+        </Container>
     )
 }
 

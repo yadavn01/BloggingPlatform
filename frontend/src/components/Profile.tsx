@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 
 const Profile = () => {
@@ -41,18 +42,27 @@ const Profile = () => {
     }
 
     return (
+        <Container maxWidth="sm">
+             <Box sx={{ mt: 4 }}> 
         <div>
-            <h2>User Profile</h2>
+            <Typography variant="h4" component="h1" gutterBottom>
+          User Profile
+        </Typography>
             {user && (
                 <div>
                     <p>Email: {user.email}</p>
                     <p>User Id: {user.id}</p>
                 </div>
             )}
+            <Button variant="outlined" color="inherit" component={RouterLink} to="/create-blogposts">
+            Create Blog
+          </Button>
             <div>
                 <Button variant="outlined" color="inherit" onClick={handleLogout}>Logout</Button>
             </div>
         </div>
+        </Box>
+        </Container>
     );
 }
 

@@ -27,12 +27,12 @@ const App: React.FC = () => {
       <div>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Register />} />
+          <Route path="/" element={<BlogPosts />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
           <Route path="/blogposts" element={<BlogPosts />} />
-          <Route path="/create-blogposts" element={<CreateBlogPost />} />
+          <Route path="/create-blogposts" element={<ProtectedRoute element={<CreateBlogPost />} />} />
         </Routes>
       </div>
     </Router>
