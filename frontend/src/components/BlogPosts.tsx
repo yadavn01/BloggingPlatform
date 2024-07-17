@@ -6,6 +6,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 interface BlogPost {
     id: number;
@@ -16,11 +17,13 @@ interface BlogPost {
 
 const BlogPosts = () => {
     const [posts, setPosts] = useState<BlogPost[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await axios.get('http://localhost:5194/api/blogposts');
             console.log("response", response)
             setPosts(response.data.result)
+            setLoading(false);
         }
         fetchPosts();    
     },[])
@@ -28,6 +31,8 @@ const BlogPosts = () => {
     return (
         <Container maxWidth="sm">
              <Box sx={{ mt: 4 }}> 
+            {loading ? (<CircularProgress />) :
+            (
         <div>
         <Typography variant="h4" component="h1" gutterBottom>
           Posts
@@ -46,7 +51,8 @@ const BlogPosts = () => {
                     </li>
                 ))}
             </ul>
-        </div>
+        </div>)
+        }
         </Box>
         </Container>
     )
