@@ -56,14 +56,16 @@ const Profile = () => {
                             <p>User Id: {user.id}</p>
                         </div>
                     )}
-                    <Button type="button" component={RouterLink} to="/create-blogposts">
-                        Create Blog
-                    </Button>
-                    <div>
-                        <Button type="button" onClick={handleLogout}>
-                            Logout
+                
+                        <Button type="button" component={RouterLink} to="/create-blogposts">
+                            Create Blog
                         </Button>
-                    </div>
+                        <div>
+                            <Button type="button" onClick={handleLogout}>
+                                Logout
+                            </Button>
+                        </div>
+                    
                 </div>
             </Box>
         </Container>

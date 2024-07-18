@@ -45,12 +45,14 @@ const BlogPosts = () => {
         <Typography variant="h4" component="h1" gutterBottom>
           Posts
         </Typography>
-        <Button variant="outlined" color="inherit" component={RouterLink} to="/create-blogposts">
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2, mt: 2 }}>
+        <Button type="button" component={RouterLink} to="/create-blogposts">
             Create Blog
           </Button>
-        <Button variant="outlined" color="inherit" component={RouterLink} to="/profile">
+          <Button type="button" component={RouterLink} to="/profile">
             Profile
           </Button>
+          </Box>
             <ul>
                 {posts.map(post => (
                     <li key={post.id}>
