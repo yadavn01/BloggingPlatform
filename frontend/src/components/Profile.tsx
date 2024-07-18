@@ -4,15 +4,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import Logout from './Logout';
+import { useAuth } from '../AuthContext';
 
 
 const Profile = () => {
     const [user, setUser] = useState<any>(null);
     const navigate = useNavigate();
-
+    const token = useAuth();
     useEffect(() => {
-        const token = localStorage.getItem('token');
-
         const fetchUserProfile = async () => {
             if (token) {
                 console.log('Token:', token);
@@ -36,7 +35,7 @@ const Profile = () => {
             }
         }
         fetchUserProfile();
-    }, [navigate]);
+    }, [navigate, token]);
 
     const handleLogout = () => {
         localStorage.removeItem('token');

@@ -2,11 +2,12 @@ import { useState } from "react";
 import { login } from "../authService";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
+import { useAuth } from '../AuthContext';
 
 const Login = () => {
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
-    const[message, setMessage] = useState('');
+    const { setToken } = useAuth();
     const navigate = useNavigate();
 
     const redirectRegister = () => {
@@ -19,12 +20,11 @@ const Login = () => {
             const response = await login({email,password})
             const userToken = response.data.token
             localStorage.setItem('token',userToken)
-            setMessage("Login Successfull")
+            setToken(userToken);
             navigate('/profile')
         }
         catch(error)
         {
-            setMessage("Login Unsuccessfull, try again!")
             console.log(error);    
         }
     }
@@ -32,7 +32,6 @@ const Login = () => {
     const handleClear = () => {
         setEmail('');
         setPassword('');
-        setMessage('');
     }
     
     return (
@@ -62,7 +61,6 @@ const Login = () => {
                         <p>Don't have an account?</p>
                         <Button type="button" onClick={redirectRegister}>Register</Button>
                     </form>
-            {message && <p>{message}</p>}
             {/* {token && (
                 <div>
                     <h3>Token</h3>

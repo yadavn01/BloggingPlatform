@@ -2,16 +2,17 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
+import { useAuth } from "../AuthContext";
 
 
 const CreateBlogPost = () => {
     const [title, setTitle] = useState<string>('');
     const [content, setContent] = useState<string>('');
     const [message, setMessage] = useState<string | null>(null);
+    const token = useAuth();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const token = localStorage.getItem('token');
         if (token) {
             console.log("hitting api post req");
             try {

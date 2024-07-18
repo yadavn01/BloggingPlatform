@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -12,7 +12,11 @@ import { useAuth } from '../AuthContext';
 const NavBar: React.FC = () => {
 
     const token = useAuth();
-
+    
+    useEffect(() => {
+        console.log('Token in NavBar:', token);
+      }, [token]);
+    
     return (
         <AppBar position="static">
             <Toolbar>
@@ -30,13 +34,13 @@ const NavBar: React.FC = () => {
                         Contact
                     </Button>
                     {!token ? (
-                        <Button variant="outlined" color="inherit" component={RouterLink} to="/login">
-                            Log In
-                        </Button>
-                    ) : (
-                        <Button variant="outlined" color="inherit" component={RouterLink} to="/logout">
-                            Log Out
-                        </Button>
+            <Button variant="outlined" color="inherit" component={RouterLink} to="/login">
+              Log In
+            </Button>
+          ) : (
+            <Button variant="outlined" color="inherit" component={RouterLink} to="/logout">
+              Log Out
+            </Button>
                     )}
                     {/* {!token && (
                         <Button variant="contained" color="primary" component={RouterLink} to="/register">

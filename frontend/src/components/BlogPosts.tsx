@@ -18,6 +18,7 @@ interface BlogPost {
 const BlogPosts = () => {
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await axios.get('http://localhost:5194/api/blogposts');
