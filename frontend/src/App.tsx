@@ -11,6 +11,7 @@ import BlogPosts from './components/BlogPosts';
 import CreateBlogPost from './components/CreateBlogPost';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { AuthProvider } from './AuthContext';
 
 const theme = createTheme({
   palette: {
@@ -22,6 +23,7 @@ const theme = createTheme({
 const App: React.FC = () => {
 
   return (
+    <AuthProvider>
     <ThemeProvider theme={theme}>
       <CssBaseline />
     <Router>
@@ -39,6 +41,7 @@ const App: React.FC = () => {
       </div>
     </Router>
     </ThemeProvider>
+    </AuthProvider>
   );
 };
 

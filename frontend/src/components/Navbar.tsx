@@ -7,10 +7,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box } from '@mui/material';
+import { useAuth } from '../AuthContext';
 
 const NavBar: React.FC = () => {
 
-    const token = localStorage.getItem('token');
+    const token = useAuth();
 
     return (
         <AppBar position="static">
@@ -28,14 +29,15 @@ const NavBar: React.FC = () => {
                     <Button color="inherit" component={RouterLink} to="/contact">
                         Contact
                     </Button>
-                    {
-                        !token ? (<Button variant="outlined" color="inherit" component={RouterLink} to="/login">
+                    {!token ? (
+                        <Button variant="outlined" color="inherit" component={RouterLink} to="/login">
                             Log In
-                        </Button>) :
-                            (<Button variant="outlined" color="inherit" component={RouterLink} to="/logout">
-                                Log Out
-                            </Button>)
-                    }
+                        </Button>
+                    ) : (
+                        <Button variant="outlined" color="inherit" component={RouterLink} to="/logout">
+                            Log Out
+                        </Button>
+                    )}
                     {/* {!token && (
                         <Button variant="contained" color="primary" component={RouterLink} to="/register">
                             Register
