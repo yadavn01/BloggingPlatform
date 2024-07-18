@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
@@ -22,6 +22,7 @@ const theme = createTheme({
 
 const App: React.FC = () => {
 
+  
   return (
     <AuthProvider>
     <ThemeProvider theme={theme}>

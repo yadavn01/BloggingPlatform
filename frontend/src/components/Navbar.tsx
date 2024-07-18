@@ -11,7 +11,7 @@ import { useAuth } from '../AuthContext';
 
 const NavBar: React.FC = () => {
 
-    const token = useAuth();
+    const {token} = useAuth();
     
     useEffect(() => {
         console.log('Token in NavBar:', token);
@@ -33,7 +33,7 @@ const NavBar: React.FC = () => {
                     <Button color="inherit" component={RouterLink} to="/contact">
                         Contact
                     </Button>
-                    {!token ? (
+                    {token === null ? (
             <Button variant="outlined" color="inherit" component={RouterLink} to="/login">
               Log In
             </Button>

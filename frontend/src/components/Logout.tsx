@@ -7,7 +7,7 @@ const Logout: React.FC = () => {
     const { setToken } = useAuth();
 
     useEffect(() => {
-        localStorage.removeItem('token');
+        localStorage.clear();
         setToken(null);
         console.log('Token after removal:', localStorage.getItem('token')); 
         navigate('/login');

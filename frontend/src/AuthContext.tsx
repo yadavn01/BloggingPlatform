@@ -11,7 +11,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [token, setToken] = useState<string | null>(null);
 
     useEffect(() => {
-        localStorage.removeItem('token');
         const storedToken = localStorage.getItem('token');
         if (storedToken) {
             setToken(storedToken);

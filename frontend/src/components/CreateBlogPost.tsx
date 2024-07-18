@@ -9,7 +9,7 @@ const CreateBlogPost = () => {
     const [title, setTitle] = useState<string>('');
     const [content, setContent] = useState<string>('');
     const [message, setMessage] = useState<string | null>(null);
-    const token = useAuth();
+    const {token} = useAuth();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

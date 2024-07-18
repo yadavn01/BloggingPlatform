@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 
 const ProtectedRoute: React.FC<{ element: JSX.Element }> = ({element}) => {
-    const token = useAuth();
+    const {token} = useAuth();
 
     if(!token) {
        return  <Navigate to="/login" />;

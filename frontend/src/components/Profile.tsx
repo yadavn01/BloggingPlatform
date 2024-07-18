@@ -10,7 +10,8 @@ import { useAuth } from '../AuthContext';
 const Profile = () => {
     const [user, setUser] = useState<any>(null);
     const navigate = useNavigate();
-    const token = useAuth();
+    const {token} = useAuth();
+    console.log("why am i geting rendered")
     useEffect(() => {
         const fetchUserProfile = async () => {
             if (token) {

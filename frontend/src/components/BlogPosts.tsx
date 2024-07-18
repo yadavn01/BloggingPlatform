@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useAuth } from "../AuthContext";
 
 interface BlogPost {
     id: number;
@@ -18,6 +19,12 @@ interface BlogPost {
 const BlogPosts = () => {
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+
+    const {token} = useAuth();
+    
+    useEffect(() => {
+        console.log('Token in blogpost:', token);
+      }, [token]);
 
     useEffect(() => {
         const fetchPosts = async () => {
