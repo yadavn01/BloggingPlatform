@@ -27,10 +27,13 @@ const About: React.FC = () => {
                     />
                 </Box>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                    Welcome to the Blogging Platform! Our mission is to provide a user-friendly and dynamic space for bloggers to share their thoughts, ideas, and stories with the world. Whether you're a seasoned writer or just starting, our platform offers the tools and features you need to create and manage your blog with ease.
+                    Welcome to the Blogging Platform! Our mission is to provide a user-friendly and dynamic space for bloggers to share their thoughts,
+                     ideas, and stories with the world. 
+                    Whether you're a seasoned writer or just starting, our platform offers the tools and features you need to create and manage your blog with ease.
                 </Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                    Here, you can connect with a community of like-minded individuals, explore diverse topics, and engage in meaningful discussions. Our intuitive interface ensures that you can focus on your content while we handle the technical aspects.
+                    Here, you can connect with a community of like-minded individuals, explore diverse topics, and engage in meaningful discussions.
+                     Our intuitive interface ensures that you can focus on your content while we handle the technical aspects.
                 </Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
                     Join us on this exciting journey and start your blogging adventure today. Happy blogging!
