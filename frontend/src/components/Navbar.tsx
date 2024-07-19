@@ -26,12 +26,12 @@ const NavBar: React.FC = () => {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Blogging Platform
                 </Typography>
+                <Button color="inherit" component={RouterLink} to="/about">
+                        About
+                    </Button>
                 <Box sx={{ display: 'flex', gap: 2 }}>
                     <Button color="inherit" component={RouterLink} to="/blogposts">
                         Blog
-                    </Button>
-                    <Button color="inherit" component={RouterLink} to="/contact">
-                        Contact
                     </Button>
                     {token === null ? (
                         <Button variant="outlined" color="inherit" component={RouterLink} to="/login">

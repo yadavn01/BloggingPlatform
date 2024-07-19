@@ -12,6 +12,7 @@ import CreateBlogPost from './components/CreateBlogPost';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AuthProvider } from './AuthContext';
+import About from './components/About';
 
 const theme = createTheme({
   palette: {
@@ -35,6 +36,7 @@ const App: React.FC = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/about" element={<About />} />
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
           <Route path="/blogposts" element={<BlogPosts />} />
           <Route path="/create-blogposts" element={<ProtectedRoute element={<CreateBlogPost />} />} />
