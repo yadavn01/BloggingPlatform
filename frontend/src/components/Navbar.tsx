@@ -24,7 +24,7 @@ const NavBar: React.FC = () => {
                     <SentimentSatisfiedAltIcon />
                 </IconButton>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Blogging Platform
+                    
                 </Typography>
                 <Button color="inherit" component={RouterLink} to="/about">
                         About

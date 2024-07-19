@@ -16,7 +16,7 @@ const About: React.FC = () => {
                         </div>
                         <div className="prompt" style={{ marginTop: '16px' }}>
                             <Typography variant="body1">
-                                A web developer with a passion for learning and creating.
+                                A Full stack developer with a passion for learning and creating.
                             </Typography>
                         </div>
                     </div>

@@ -39,51 +39,48 @@ const BlogPosts = () => {
 
     return (
         <Container sx={{ width: '85%', mt: 4 }}>
-           
-                {loading ? (<CircularProgress />) :
-                    (
-                        <div>
-                            <Typography variant="h4" component="h1" gutterBottom>
-                                Posts
-                            </Typography>
-                            <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2, mt: 2 }}>
-                                <Button type="button" component={RouterLink} to="/create-blogposts">
-                                    Create Blog
-                                </Button>
-                                <Button type="button" component={RouterLink} to="/profile">
-                                    Profile
-                                </Button>
-                            </Box>
-                            
-                            <Grid container spacing={2} sx={{ mt: 2 }}>
-                                    {posts.map(post => (
-                                        <Grid item xs={2} sm={4} md={4} key={post.id}>
-                                            <Card sx={{ height: '100%' }}>
-                                                <CardContent>
-                                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                                        Blog Post
-                                                    </Typography>
-                                                    <Typography variant="h5" component="div">
-                                                        {post.title}
-                                                    </Typography>
-                                                    <Typography variant="body2">
-                                                        {post.content}
-                                                    </Typography>
-                                                </CardContent>
-                                                <CardActions>
-                                                    <Button size="small" component={RouterLink} to={`/posts/${post.id}`}>Learn More</Button>
-                                                </CardActions>
-                                            </Card>
-                                        </Grid>
-                                    ))}
-                                     </Grid>
-                   
 
+            {loading ? (<CircularProgress />) :
+                (
+                    <div>
+                        <Typography variant="h4" component="h1" gutterBottom>
+                            Posts
+                        </Typography>
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2, mt: 2 }}>
+                            <Button type="button" component={RouterLink} to="/create-blogposts">
+                                Create Blog
+                            </Button>
+                            <Button type="button" component={RouterLink} to="/profile">
+                                Profile
+                            </Button>
+                        </Box>
 
-                           
-                        </div>)
-                }
-          
+                        <Grid container spacing={2} sx={{ mt: 2 }}>
+                            {posts.map(post => (
+                                <Grid item xs={2} sm={4} md={4} key={post.id}>
+                                    <Card sx={{ height: '100%' }}>
+                                        <CardContent>
+                                            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                                Blog Post
+                                            </Typography>
+                                            <Typography variant="h5" component="div">
+                                                {post.title}
+                                            </Typography>
+                                            <Typography variant="body2">
+                                                {post.content}
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                            <Button size="small" component={RouterLink} to={`/posts/${post.id}`}>Learn More</Button>
+                                        </CardActions>
+                                    </Card>
+                                </Grid>
+                            ))}
+                        </Grid>
+
+                    </div>)
+            }
+
         </Container>
     )
 }
