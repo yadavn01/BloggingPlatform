@@ -10,6 +10,7 @@ import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useAuth } from "../AuthContext";
 import {formatBlogBody} from "../utilities/formatBlogBody";
+import { motion } from 'framer-motion';
 
 interface BlogPost {
     id: number;
@@ -56,6 +57,11 @@ const BlogPosts = () => {
                             </Button>
                         </Box>
 
+                        <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
                         <Grid container spacing={2} sx={{ mt: 2 }}>
                             {posts.map(post => (
                                 <Grid item xs={2} sm={4} md={4} key={post.id}>
@@ -78,6 +84,7 @@ const BlogPosts = () => {
                                 </Grid>
                             ))}
                         </Grid>
+                        </motion.div>
 
                     </div>)
             }
