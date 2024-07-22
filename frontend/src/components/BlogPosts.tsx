@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useAuth } from "../AuthContext";
+import {formatBlogBody} from "../utilities/formatBlogBody";
 
 interface BlogPost {
     id: number;
@@ -64,10 +65,10 @@ const BlogPosts = () => {
                                                 Blog Post
                                             </Typography>
                                             <Typography variant="h5" component="div">
-                                                {post.title}
+                                            {formatBlogBody(post.title)}
                                             </Typography>
                                             <Typography variant="body2">
-                                                {post.content}
+                                            {formatBlogBody(post.content)}
                                             </Typography>
                                         </CardContent>
                                         <CardActions>
