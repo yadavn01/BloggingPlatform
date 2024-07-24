@@ -11,6 +11,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useAuth } from "../AuthContext";
 import {formatBlogBody} from "../utilities/formatBlogBody";
 import { motion } from 'framer-motion';
+import Footer from "./Footer";
 
 interface BlogPost {
     id: number;
@@ -40,6 +41,7 @@ const BlogPosts = () => {
     }, [])
 
     return (
+        <>
         <Container sx={{ width: '85%', mt: 4 }}>
 
             {loading ? (<CircularProgress />) :
@@ -90,6 +92,8 @@ const BlogPosts = () => {
             }
 
         </Container>
+        <Footer />
+        </>
     )
 }
 
