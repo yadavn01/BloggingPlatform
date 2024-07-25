@@ -7,20 +7,22 @@ const Footer = () => {
         <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
             <Container maxWidth="lg">
                 <Typography variant="h6" align="center" gutterBottom>
-                    My Blogging Site
+                    This website is built with <i className="devicon-react-original"></i>
+                    <i className="devicon-typescript-plain"></i>
+                    <i className="devicon-dotnetcore-plain"></i>
+
+                    <i className="devicon-docker-plain"></i>
+
+                    <i className="devicon-github-original"></i>
                 </Typography>
-                <Typography
-                    variant="subtitle1"
-                    align="center"
-                    color="text.secondary"
-                    component="p"
-                >
-                    Follow us on social media!
-                </Typography>
+              
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-                    <Link href="#" sx={{ mx: 1 }}>Facebook</Link>
-                    <Link href="#" sx={{ mx: 1 }}>Twitter</Link>
-                    <Link href="#" sx={{ mx: 1 }}>Instagram</Link>
+                    <Link href="https://github.com/yadavn01" sx={{ mx: 2, fontSize: 30 }}>
+            <i className="devicon-github-original"></i>
+          </Link>
+                    <Link href="https://www.linkedin.com/in/namanyd/" sx={{ mx: 2, fontSize: 30 }}>
+            <i className="devicon-linkedin-plain"></i>
+          </Link>
                 </Box>
                 <Typography
                     variant="body2"
@@ -30,7 +32,7 @@ const Footer = () => {
                 >
                     {'© '}
                     {new Date().getFullYear()}
-                    {' My Blogging Site. All rights reserved.'}
+                    {' Naman Yadav, Ynaman29@gmail.com. All rights reserved.'}
                 </Typography>
             </Container>
         </Box>
