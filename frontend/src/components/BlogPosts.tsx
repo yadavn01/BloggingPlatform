@@ -67,6 +67,10 @@ const BlogPosts = () => {
                         <Grid container spacing={2} sx={{ mt: 2 }}>
                             {posts.map(post => (
                                 <Grid item xs={2} sm={4} md={4} key={post.id}>
+                                     <motion.div
+                                                whileHover={{ scale: 1.05 }}
+                                                transition={{ duration: 0.3 }}
+                                            >
                                     <Card sx={{ height: '100%' }}>
                                         <CardContent>
                                             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -83,6 +87,7 @@ const BlogPosts = () => {
                                             <Button size="small" component={RouterLink} to={`/posts/${post.id}`}>Learn More</Button>
                                         </CardActions>
                                     </Card>
+                                    </motion.div>
                                 </Grid>
                             ))}
                         </Grid>

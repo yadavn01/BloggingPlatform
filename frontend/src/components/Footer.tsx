@@ -4,16 +4,16 @@ import { Container, Typography, Box, Link } from '@mui/material';
 
 const Footer = () => {
     return (
-        <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+        <Box sx={{ bgcolor: 'background.paper', p: 6, borderTop: 1 }} component="footer">
             <Container maxWidth="lg">
                 <Typography variant="h6" align="center" gutterBottom>
-                    This website is built with <i className="devicon-react-original"></i>
-                    <i className="devicon-typescript-plain"></i>
-                    <i className="devicon-dotnetcore-plain"></i>
+                    This website is built with 
+                    <i className="devicon-react-original" style={{ margin: '0 2px' }}></i>
+                    <i className="devicon-typescript-plain" style={{ margin: '0 2px' }}></i>
+                    <i className="devicon-dotnetcore-plain" style={{ margin: '0 2px' }}></i>
+                    <i className="devicon-docker-plain" style={{ margin: '0 2px' }}></i>
 
-                    <i className="devicon-docker-plain"></i>
-
-                    <i className="devicon-github-original"></i>
+                    <i className="devicon-github-original" style={{ margin: '0 2px' }}></i>
                 </Typography>
               
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
