@@ -92,7 +92,7 @@ const BlogPosts = () => {
             }
 
         </Container>
-        <Footer />
+
         </>
     )
 }

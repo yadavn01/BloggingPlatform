@@ -13,6 +13,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AuthProvider } from './AuthContext';
 import About from './components/About';
+import Footer from './components/Footer';
 
 const theme = createTheme({
   palette: {
@@ -29,8 +30,9 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
     <Router>
-      <div>
+    <div className="app-container">
         <NavBar />
+        <div className="content-wrap">
         <Routes>
           <Route path="/" element={<BlogPosts />} />
           <Route path="/register" element={<Register />} />
@@ -41,6 +43,8 @@ const App: React.FC = () => {
           <Route path="/blogposts" element={<BlogPosts />} />
           <Route path="/create-blogposts" element={<ProtectedRoute element={<CreateBlogPost />} />} />
         </Routes>
+        </div>
+        <Footer />
       </div>
     </Router>
     </ThemeProvider>
