@@ -17,6 +17,7 @@ import Footer from './components/Footer';
 import { Box, FormControlLabel, IconButton, PaletteMode, Switch, useMediaQuery } from '@mui/material';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import BlogPostDetail from './components/BlogPostDetail';
 
 
 
@@ -60,6 +61,7 @@ const App: React.FC = () => {
           <Route path="/about" element={<About />} />
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
           <Route path="/blogposts" element={<BlogPosts />} />
+          <Route path="/posts/:id" element={<BlogPostDetail />} />
           <Route path="/create-blogposts" element={<ProtectedRoute element={<CreateBlogPost />} />} />
         </Routes>
         </div>
