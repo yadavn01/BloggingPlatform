@@ -38,6 +38,17 @@ public class BlogPostsController : ControllerBase
         return Ok(blogposts);
      }
 
+     [HttpGet("{id}")]
+     public async Task<IActionResult> GetBlogPost(int id)
+     {
+        var blogPost  = await _context.BlogPosts.FindAsync(id);
+        if (blogPost == null)
+        {
+            return NotFound();
+        }
+        return Ok(blogPost );
+     }
+
    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
    [HttpPost]
    public async Task<IActionResult> CreateBlogPost([FromBody] BlogPost blogPost)
