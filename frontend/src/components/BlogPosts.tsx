@@ -11,7 +11,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useAuth } from "../AuthContext";
 import {formatBlogBody} from "../utilities/formatBlogBody";
 import { motion } from 'framer-motion';
-import Footer from "./Footer";
 
 interface BlogPost {
     id: number;

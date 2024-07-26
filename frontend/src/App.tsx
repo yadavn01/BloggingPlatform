@@ -14,16 +14,28 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { AuthProvider } from './AuthContext';
 import About from './components/About';
 import Footer from './components/Footer';
+import { Box, FormControlLabel, IconButton, PaletteMode, Switch, useMediaQuery } from '@mui/material';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
-const theme = createTheme({
-  palette: {
-    mode: 'light',
-  },
-});
 
 
 const App: React.FC = () => {
+  const [mode, setMode] = React.useState<PaletteMode>('light');
+  
+  const handleToggle = () => {
+    setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
+  };
 
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: mode,
+        },
+      }),
+    [mode]
+  );
   
   return (
     <AuthProvider>
@@ -32,6 +44,13 @@ const App: React.FC = () => {
     <Router>
     <div className="app-container">
         <NavBar />
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
+                {
+                  <IconButton sx={{ ml: 1 }} onClick={handleToggle} color="inherit">
+                  {theme.palette.mode === 'dark' ? <WbSunnyIcon /> : <DarkModeIcon />}
+                </IconButton>
+                }
+            </Box>
         <div className="content-wrap">
         <Routes>
           <Route path="/" element={<BlogPosts />} />

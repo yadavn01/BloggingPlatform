@@ -15,13 +15,13 @@ const About: React.FC = () => {
                     >
                         <div className="about">
                             <div className="heading">
-                                <Typography variant="h3" component="h2" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#333' }}>
+                                <Typography variant="h3" component="h2" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                     Hi, I'm Naman
                                     <Emoji symbol="👋" label="Wave hello!" />
                                 </Typography>
                             </div>
                             <div className="prompt" style={{ marginTop: '16px' }}>
-                                <Typography variant="body1" sx={{ color: '#555' }}>
+                                <Typography variant="body1" sx={{}}>
                                     A Full stack developer with a passion for learning and creating.
                                 </Typography>
                             </div>
@@ -41,15 +41,15 @@ const About: React.FC = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <Typography variant="body1" sx={{ mb: 2, color: '#444', lineHeight: 1.6 }}>
+                    <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
                         Welcome to the Blogging Platform! Our mission is to provide a user-friendly and dynamic space for bloggers to share their thoughts,
                         ideas, and stories with the world. Whether you're a seasoned writer or just starting, our platform offers the tools and features you need to create and manage your blog with ease.
                     </Typography>
-                    <Typography variant="body1" sx={{ mb: 2, color: '#444', lineHeight: 1.6 }}>
+                    <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
                         Here, you can connect with a community of like-minded individuals, explore diverse topics, and engage in meaningful discussions.
                         Our intuitive interface ensures that you can focus on your content while we handle the technical aspects.
                     </Typography>
-                    <Typography variant="body1" sx={{ mb: 2, color: '#444', lineHeight: 1.6 }}>
+                    <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
                         Join us on this exciting journey and start your blogging adventure today. Happy blogging!
                     </Typography>
                 </motion.div>
