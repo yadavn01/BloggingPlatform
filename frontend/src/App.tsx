@@ -18,6 +18,7 @@ import { Box, FormControlLabel, IconButton, PaletteMode, Switch, useMediaQuery }
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import BlogPostDetail from './components/BlogPostDetail';
+import AnimatedBackground from './components/AnimatedBackground';
 
 
 
@@ -66,6 +67,7 @@ const App: React.FC = () => {
         </Routes>
         </div>
         <Footer />
+        <AnimatedBackground />
       </div>
     </Router>
     </ThemeProvider>

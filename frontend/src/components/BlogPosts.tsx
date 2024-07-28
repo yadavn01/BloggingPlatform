@@ -41,7 +41,7 @@ const BlogPosts = () => {
 
     return (
         <>
-        <Container sx={{ width: '85%', mt: 4 }}>
+        <Container sx={{ width: '85%', mb: 4 }}>
 
             {loading ? (<CircularProgress />) :
                 (
