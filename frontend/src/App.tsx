@@ -67,7 +67,7 @@ const App: React.FC = () => {
         </Routes>
         </div>
         <Footer />
-        <AnimatedBackground />
+        {/* <AnimatedBackground /> */}
       </div>
     </Router>
     </ThemeProvider>
