@@ -18,7 +18,7 @@ const Profile = () => {
                 console.log('Token:', token);
                 try {
                     console.log('Making API request...');
-                    const response = await axios.get('http://backend/api/auth/profile', {
+                    const response = await axios.get('http://localhost:5194/api/auth/profile', {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }

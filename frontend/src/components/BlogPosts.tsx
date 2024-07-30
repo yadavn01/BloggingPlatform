@@ -31,7 +31,7 @@ const BlogPosts = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await axios.get('http://backend/api/blogposts');
+            const response = await axios.get('http://localhost:5194/api/blogposts');
             console.log("response", response)
             setPosts(response.data.result)
             setLoading(false);
