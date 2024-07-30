@@ -168,9 +168,9 @@ C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\st
 C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.BloggingPlatform.props
 C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\scopedcss\bundle\BloggingPlatform.styles.css
-C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\BloggingPlatform.csproj.CopyComplete
 C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\BloggingPlatform.dll
 C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\refint\BloggingPlatform.dll
 C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\BloggingPlatform.pdb
 C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\BloggingPlatform.genruntimeconfig.cache
 C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\ref\BloggingPlatform.dll
+C:\Users\ynama\Dotnet Learning\Blog\BloggingPlatform\backend\obj\Debug\net8.0\Blogging.91C12D71.Up2Date
