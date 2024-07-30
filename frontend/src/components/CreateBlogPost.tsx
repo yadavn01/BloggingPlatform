@@ -16,7 +16,7 @@ const CreateBlogPost = () => {
         if (token) {
             console.log("hitting api post req");
             try {
-                const response = await axios.post('http://localhost:5194/api/blogposts', 
+                const response = await axios.post('http://backend/api/blogposts', 
                     { title, content },
                     {
                         headers: {
