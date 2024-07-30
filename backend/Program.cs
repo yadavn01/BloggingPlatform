@@ -45,12 +45,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+    
+
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+ApplyMigrations(app);
 
 if (app.Environment.IsDevelopment())
 {
@@ -69,3 +72,16 @@ app.MapControllers();
 
 app.Urls.Add("http://*:80"); //application listens on port 80 inside the container
 app.Run();
+
+// Apply migrations method
+void ApplyMigrations(WebApplication app)
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        if (context.Database.GetPendingMigrations().Any())
+        {
+            context.Database.Migrate();
+        }
+    }
+}

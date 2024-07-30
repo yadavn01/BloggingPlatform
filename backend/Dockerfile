@@ -22,5 +22,3 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "BloggingPlatform.dll"]
 
-# Run migrations and then start the application
-CMD /bin/bash -c 'dotnet ef database update && dotnet BloggingPlatform.dll'

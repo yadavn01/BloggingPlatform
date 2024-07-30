@@ -9,6 +9,13 @@ services:
       - "5194:80"
     networks:
       - app-network
+    volumes:
+      - sqlite-data:/app/Data
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Jwt__Issuer=BloggingPlatform
+      - Jwt__Audience=BloggingPlatform
+      - Jwt__Key=YourSuperSecureSecretKey1234567890
 
   frontend:
     build:
@@ -22,3 +29,6 @@ services:
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  sqlite-data:
