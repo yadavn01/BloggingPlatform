@@ -55,7 +55,7 @@ const CreateBlogPost = () => {
                 <TextField value={content} onChange={(e) => setContent(e.target.value)}
                 fullWidth
                 multiline
-                rows={4}
+                rows={20}
                 margin="normal"
                 required />
             </div>

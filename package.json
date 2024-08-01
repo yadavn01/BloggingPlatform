@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "framer-motion": "^11.3.8"
-  },
-  "devDependencies": {
-    "@types/react-syntax-highlighter": "^15.5.13"
-  }
-}

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Container, Typography, CircularProgress } from '@mui/material';
 
+
 interface BlogPost {
     id: number;
     title: string;
