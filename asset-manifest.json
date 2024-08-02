@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/BloggingPlatform/static/css/main.60769ee8.css",
+    "main.js": "/BloggingPlatform/static/js/main.e646cdac.js",
+    "static/js/453.d855a71b.chunk.js": "/BloggingPlatform/static/js/453.d855a71b.chunk.js",
+    "index.html": "/BloggingPlatform/index.html",
+    "main.60769ee8.css.map": "/BloggingPlatform/static/css/main.60769ee8.css.map",
+    "main.e646cdac.js.map": "/BloggingPlatform/static/js/main.e646cdac.js.map",
+    "453.d855a71b.chunk.js.map": "/BloggingPlatform/static/js/453.d855a71b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.60769ee8.css",
+    "static/js/main.e646cdac.js"
+  ]
+}
