@@ -2,12 +2,12 @@ import React from 'react';
 import { Container, Typography, Box, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 import Emoji from './Icons/Emoji';
-
+import TicTacToeAnimation from './AnimatedObject';
 
 const About: React.FC = () => {
     return (
         <Container maxWidth="md" sx={{ mt: 4 }}>
-            <Paper elevation={5} sx={{ p: 4, borderRadius: '16px' }}>
+            {/* <Paper elevation={5} sx={{ p: 4, borderRadius: '16px' }}> */}
                 <Box sx={{ textAlign: 'center', mb: 4 }}>
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
@@ -28,14 +28,18 @@ const About: React.FC = () => {
                             </div>
                         </div>
                     </motion.div>
-                    <motion.img
+                    <Box sx={{ mt: 4 }}>
+                    <TicTacToeAnimation />
+                    </Box>
+                    {/* <motion.img
+                    
                         src="https://via.placeholder.com/600x200"
                         alt="Blogging Platform"
                         style={{ width: '100%', borderRadius: '16px', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1.2 }}
-                    />
+                    /> */}
                 </Box>
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
@@ -51,7 +55,8 @@ const About: React.FC = () => {
                     </Typography>
 
                 </motion.div>
-            </Paper>
+                
+            {/* </Paper> */}
         </Container>
     );
 };
