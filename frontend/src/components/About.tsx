@@ -46,6 +46,7 @@ const About: React.FC = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
+                    <div className="subtitle1">
                     <Typography variant="h6" sx={{ mb: 2, lineHeight: 1.6 }}>
                     Welcome to my little corner of the internet! Expect to find random thoughts on my past projects and current experiments. 
                     
@@ -53,7 +54,7 @@ const About: React.FC = () => {
                     <Typography variant="h6" sx={{ mb: 2, lineHeight: 1.6 }}>
                     Feeling chatty? Want to join the fun? Just register or log in and unleash your inner blogger!
                     </Typography>
-
+                    </div>
                 </motion.div>
                 
             {/* </Paper> */}
