@@ -56,7 +56,9 @@ const About: React.FC = () => {
                     </Typography>
                     </div>
                 </motion.div>
-                
+
+
+               
             {/* </Paper> */}
         </Container>
     );
