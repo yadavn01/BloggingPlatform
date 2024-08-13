@@ -42,6 +42,10 @@ public class BlogPostsController : ControllerBase
      public async Task<IActionResult> GetBlogPost(int id)
      {
         var blogPost  = await _context.BlogPosts.FindAsync(id);
+
+        blogPost.ViewCount++;
+        await _context.SaveChangesAsync();
+
         if (blogPost == null)
         {
             return NotFound();
@@ -85,4 +89,5 @@ public class BlogPostsController : ControllerBase
             return StatusCode(500, "Internal server error");
         }
     }
+    
 }

@@ -7,6 +7,7 @@ import { useAuth } from '../AuthContext';
 const Login = () => {
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
+    const[status, setStatus] = useState('');
     const { setToken } = useAuth();
     const navigate = useNavigate();
 
@@ -22,6 +23,7 @@ const Login = () => {
             localStorage.setItem('token',userToken)
             setToken(userToken);
             navigate('/profile')
+            setStatus(response.data.title || 'Login Successful');
         }
         catch(error)
         {
@@ -58,6 +60,7 @@ const Login = () => {
                         </div>
                         <Button type="submit">Login</Button>
                         <Button type="button" onClick={handleClear}> Clear</Button>
+                        <p>{status}</p>
                         <p>Don't have an account?</p>
                         <Button type="button" onClick={redirectRegister}>Register</Button>
                     </form>
