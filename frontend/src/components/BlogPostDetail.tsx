@@ -10,7 +10,7 @@ interface BlogPost {
     content: string;
     authorId: string;
     createdAt: string;
-    viewcount: string;
+    viewCount: string;
 }
 
 const BlogPostDetail = () => {
@@ -47,7 +47,7 @@ const BlogPostDetail = () => {
                 {post.content}
             </Typography>
             <Typography variant="caption" display="block" gutterBottom>
-                Views {post.viewcount}
+                Views {post.viewCount}
             </Typography>
             <Typography variant="caption" display="block" gutterBottom>
                 By {post.authorId} on {new Date(post.createdAt).toLocaleDateString()}

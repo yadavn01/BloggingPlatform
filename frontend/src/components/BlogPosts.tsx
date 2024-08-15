@@ -16,6 +16,7 @@ interface BlogPost {
     id: number;
     title: string;
     content: string;
+    viewCount: string;
 }
 
 const BlogPosts = () => {

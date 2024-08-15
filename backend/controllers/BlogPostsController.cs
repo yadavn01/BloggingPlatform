@@ -74,6 +74,7 @@ public class BlogPostsController : ControllerBase
             // Assign the extracted AuthorId to the blogPost object
             blogPost.AuthorId = authorId;
             blogPost.CreatedAt = DateTime.UtcNow;
+            blogPost.ViewCount = 0;
 
             // Add the blogPost to the database context
             _context.BlogPosts.Add(blogPost);
