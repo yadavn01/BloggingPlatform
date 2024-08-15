@@ -23,10 +23,15 @@ const Login = () => {
             localStorage.setItem('token',userToken)
             setToken(userToken);
             navigate('/profile')
-            setStatus(response.data.title || 'Login Successful');
+            
         }
-        catch(error)
+        catch(error: any)
         {
+            if (error.response && error.response.data && error.response.data.title) {
+                setStatus(error.response.data.title);
+            } else {
+                setStatus('Login failed. Please try again.');
+            }
             console.log(error);    
         }
     }

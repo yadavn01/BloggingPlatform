@@ -7,6 +7,7 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const[status, setStatus] = useState('');
     const navigate = useNavigate();
 
     const redirectLogin = () => {
@@ -27,7 +28,12 @@ const Register = () => {
             setMessage("Registration Successfull")
             navigate('/login')
         }
-        catch (error) {
+        catch (error:any) {
+            if (error.response && error.response.data && error.response.data.title) {
+                setStatus(error.response.data.title);
+            } else {
+                setStatus('Login failed. Please try again.');
+            }
             console.log(error);
             setMessage("Registration not complete, try again!")
         }
